@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:ui/models/api_model.dart';
+
+//import 'package:ui/models/api_model.dart';
 
 class ApiService {
   Future getapi() async {
@@ -10,7 +11,7 @@ class ApiService {
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       for(Map<String, dynamic> item in data){
-        organisation_list.add(ApiModel.fromJson(item))
+       // organisation_list.add(ApiModel.fromJson(item))
       }
     }
     return organisation_list;
