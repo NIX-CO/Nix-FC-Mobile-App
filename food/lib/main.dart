@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food/home_icon_buttoms.dart';
 
 import 'Page2.dart';
+import 'route.dart';
 
 void main() {
   runApp(MyApp());
@@ -141,7 +142,10 @@ class MyHomePage extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Page2()));
+                                          builder: (context) =>
+                                              NavigationScreen(
+                                                  31.659427114450036,
+                                                  -8.055183938185575)));
                                 },
                               )
                             ],
