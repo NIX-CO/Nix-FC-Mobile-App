@@ -164,7 +164,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     List<LatLng> polylineCoordinates = [];
     List<dynamic> points = [];
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-        'YOUR_API_KEY',
+        'AIzaSyA5dKxk1hcGAbSGUD5Jiui2lE98Lt_QBtI',
         PointLatLng(curLocation.latitude, curLocation.longitude),
         PointLatLng(dst.latitude, dst.longitude),
         travelMode: TravelMode.driving);
