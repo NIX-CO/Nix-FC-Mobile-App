@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFF363567),
+      backgroundColor: Color.fromARGB(255, 245, 142, 68),
       bottomNavigationBar: Container(
         height: 80,
         width: double.infinity,
@@ -77,13 +77,16 @@ class MyHomePage extends StatelessWidget {
                     left: 75,
                     top: 40,
                   ),
-                  height: 400,
+                  height: 350,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(80),
                     gradient: LinearGradient(
                       begin: Alignment.bottomLeft,
-                      colors: [Color(0xffFD8BAB), Color(0xFFFD44C4)],
+                      colors: [
+                        Color(0xffFD8BAB),
+                        Color.fromARGB(255, 225, 253, 68)
+                      ],
                     ),
                   ),
                 ),
@@ -94,9 +97,9 @@ class MyHomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'NIX-FC HomePage',
+                      'NIX-FC',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 36, 36, 36),
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
                       ),
@@ -106,10 +109,11 @@ class MyHomePage extends StatelessWidget {
                     ),
                     Text(
                       'Venez vivre une aventure extraordinaire avec nous !',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 44, 44, 44), fontSize: 18),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 20),
+                      padding: EdgeInsets.only(top: 140),
                       child: Column(
                         children: [
                           Row(
