@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   // The function that fetches data from the API
   Future<void> _fetchData() async {
-    const apiUrl = 'https://jsonplaceholder.typicode.com/photos';
+    const apiUrl = 'https://nix-fc.azurewebsites.net/organization/api/';
 
     HttpClient client = HttpClient();
     client.autoUncompress = true;
@@ -74,13 +74,14 @@ class _HomePageState extends State<HomePage> {
                       return Card(
                           child: ListTile(
                         leading: Image.network(
-                          _loadedPhotos[index]["thumbnailUrl"],
+                          _loadedPhotos[index]["image"],
                           width: 150,
+                          height: 150,
                           fit: BoxFit.cover,
                         ),
-                        title: Text(_loadedPhotos[index]['title']),
+                        title: Text(_loadedPhotos[index]['name']),
                         subtitle:
-                            Text('Photo ID: ${_loadedPhotos[index]["id"]}'),
+                            Text('Field ID: ${_loadedPhotos[index]["id"]}'),
                         trailing: TextButton(
                           child: Text("Go To map"),
                           onPressed: () {
@@ -88,8 +89,10 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => NavigationScreen(
-                                        31.659427114450036,
-                                        -8.055183938185575)));
+                                        double.parse(
+                                            _loadedPhotos[index]["latitude"]),
+                                        double.parse(_loadedPhotos[index]
+                                            ["longitude"]))));
                           },
                         ),
                       ));
