@@ -3,6 +3,7 @@ import 'dart:io'; // for using HttpClient
 import 'dart:convert';
 
 import 'package:food/route.dart'; // for using json.decode()
+import 'rsv_field.dart';
 
 void main() {
   runApp(const Page2());
@@ -71,31 +72,86 @@ class _HomePageState extends State<HomePage> {
                 : ListView.builder(
                     itemCount: _loadedPhotos.length,
                     itemBuilder: (BuildContext ctx, index) {
+                      // return Card(
+                      //     child: ListTile(
+                      //   leading: Image.network(
+                      //     _loadedPhotos[index]["image"],
+                      //     width: 150,
+                      //     height: 150,
+                      //     fit: BoxFit.cover,
+                      //   ),
+                      //   title: Text(_loadedPhotos[index]['name']),
+                      //   subtitle:
+                      //       Text('Field ID: ${_loadedPhotos[index]["id"]}'),
+                      //   trailing: TextButton(
+                      //     child: Text("Go To map"),
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) => NavigationScreen(
+                      //                   double.parse(
+                      //                       _loadedPhotos[index]["latitude"]),
+                      //                   double.parse(_loadedPhotos[index]
+                      //                       ["longitude"]))));
+                      //     },
+                      //   ),
+                      // ));
                       return Card(
-                          child: ListTile(
-                        leading: Image.network(
-                          _loadedPhotos[index]["image"],
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.cover,
+                        child: Column(
+                          children: [
+                            Image.network(
+                              _loadedPhotos[index]["image"],
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.cover,
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              _loadedPhotos[index]['name'],
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Field ID: ${_loadedPhotos[index]["id"]}',
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                TextButton(
+                                  child: const Text('Go To map'),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                NavigationScreen(
+                                                    double.parse(
+                                                        _loadedPhotos[index]
+                                                            ["latitude"]),
+                                                    double.parse(
+                                                        _loadedPhotos[index]
+                                                            ["longitude"]))));
+                                  },
+                                ),
+                                TextButton(
+                                  child: const Text('RSV field'),
+                                  onPressed: () {
+                                    // do something when button 2 is pressed
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                FieldsPage()));
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        title: Text(_loadedPhotos[index]['name']),
-                        subtitle:
-                            Text('Field ID: ${_loadedPhotos[index]["id"]}'),
-                        trailing: TextButton(
-                          child: Text("Go To map"),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NavigationScreen(
-                                        double.parse(
-                                            _loadedPhotos[index]["latitude"]),
-                                        double.parse(_loadedPhotos[index]
-                                            ["longitude"]))));
-                          },
-                        ),
-                      ));
+                      );
                     })));
   }
 }
