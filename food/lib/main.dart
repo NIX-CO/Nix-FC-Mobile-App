@@ -4,6 +4,7 @@ import 'package:food/home_icon_buttoms.dart';
 
 import 'Page2.dart';
 import 'route.dart';
+import 'FAQ_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -187,7 +188,7 @@ class MyHomePage extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Page2()));
+                                          builder: (context) => faq()));
                                 },
                               )
                             ],
