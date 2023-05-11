@@ -48,30 +48,35 @@ class _FieldsPageState extends State<FieldsPage> {
   }
 
   Future<void> postData() async {
-    if (selectedField != null && startDate != null && endDate != null) {
-      final url = Uri.parse(
-          'https://nix-fc.azurewebsites.net/reservation/api/reserve/');
-      final body = json.encode({
-        'Field': selectedField!.name,
-        'User': 'haitam',
-        'Start time': startDate!.toIso8601String(),
-        'End time': endDate!.toIso8601String(),
-      });
-      final response = await http.post(
-        url,
-        headers: {'Content-Type': 'application/json'},
-        body: body,
-      );
-      if (response.statusCode == 200) {
-        // Data posted successfully
-        print('Data posted successfully');
+    try {
+      if (selectedField != null && startDate != null && endDate != null) {
+        final url = Uri.parse(
+            'https://nix-fc.azurewebsites.net/reservation/api/reserve/');
+        final body = json.encode({
+          'Field': selectedField!.name,
+          'User': 'haitam',
+          'Start time': startDate!.toIso8601String(),
+          'End time': endDate!.toIso8601String(),
+        });
+        final response = await http.post(
+          url,
+          headers: {'Content-Type': 'application/json'},
+          body: body,
+        );
+        if (response.statusCode == 200) {
+          // Data posted successfully
+          print('Data posted successfully');
+        } else {
+          // Error occurred while posting data
+          print('Error occurred while posting data');
+        }
       } else {
-        // Error occurred while posting data
-        print('Error occurred while posting data');
+        // Required fields are missing
+        print('Please select all fields');
       }
-    } else {
-      // Required fields are missing
-      print('Please select all fields');
+    } catch (error) {
+      // Exception occurred during the request
+      print('Error: $error');
     }
   }
 
